@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Phone, MessageCircle, ShoppingCart, Calendar, Mail, MapPin, CheckCircle2, ChevronRight, Leaf, ShieldCheck, Clock, Sparkles, Star } from "lucide-react";
 import "../index.css";
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 // ---------- THEME ----------
 const theme = {
@@ -59,6 +60,7 @@ function currency(v){
 }
 
 export default function YenSaoBuiTuyen(){
+  const [menuOpen, setMenuOpen] = useState(false);
   const [qty, setQty] = useState({});
   const zaloId = "0976226944"; // e.g., 098xxxxxxx or OA ID. Replace.
   const phone = "0976226944";  // Replace.
@@ -111,7 +113,8 @@ export default function YenSaoBuiTuyen(){
             </span>
             <span className="font-semibold tracking-wide" style={{color: theme.brand.primary}}>Yến Sào Bùi Tuyển</span>
           </a>
-          <nav className="flex-1 min-w-0 flex gap-6 text-sm x-scroll whitespace-nowrap max-w-full">
+          {/* Desktop nav centered */}
+          <nav className="hidden md:flex flex-1 justify-center gap-6 text-sm">
             <Link to="/">Trang chủ</Link>
             <Link to="/about">Giới thiệu</Link>
             <Link to="/quy-trinh">Quy trình</Link>
@@ -119,15 +122,39 @@ export default function YenSaoBuiTuyen(){
             <Link to="#lien-he">Liên hệ</Link>
           </nav>
 
-          <div className="flex items-center gap-2 shrink-0">
-            <a href={`tel:${phone.replace(/\s/g,'')}`} className={`px-3 py-2 ${theme.radius}`} style={{background: theme.brand.primary, color: 'white'}}>
+          {/* Mobile actions + hamburger */}
+          <div className="ml-auto flex items-center gap-2 md:gap-3">
+            <a href={`tel:${phone.replace(/\s/g,'')}`} className={`hidden md:inline-flex px-3 py-2 ${theme.radius}`} style={{background: theme.brand.primary, color: 'white'}}>
               <div className="flex items-center gap-2 text-sm"><Phone className="h-4 w-4"/> Gọi</div>
             </a>
-            <a href={`https://zalo.me/${"0976226944"}`} className={`px-3 py-2 ${theme.radius} border text-sm`} style={{borderColor: theme.brand.primary, color: theme.brand.primary}}>
+            <a href={`https://zalo.me/${"0976226944"}`} className={`hidden md:inline-flex px-3 py-2 ${theme.radius} border text-sm`} style={{borderColor: theme.brand.primary, color: theme.brand.primary}}>
               <div className="flex items-center gap-2"><MessageCircle className="h-4 w-4"/> Zalo</div>
             </a>
+            <button
+              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border"
+              aria-label="Mở menu"
+              onClick={() => setMenuOpen(v => !v)}
+            >
+              <span className="block w-5 h-[2px] bg-stone-700"/>
+              <span className="block w-5 h-[2px] bg-stone-700 mt-1.5"/>
+              <span className="block w-5 h-[2px] bg-stone-700 mt-1.5"/>
+            </button>
           </div>
         </div>
+        {menuOpen && (
+          <div className="md:hidden border-t bg-white">
+            <nav className="max-w-7xl mx-auto px-4 py-3 grid gap-3 text-sm">
+              <Link to="/" onClick={() => setMenuOpen(false)}>Trang chủ</Link>
+              <Link to="/about" onClick={() => setMenuOpen(false)}>Giới thiệu</Link>
+              <Link to="/quy-trinh" onClick={() => setMenuOpen(false)}>Quy trình</Link>
+              <a href="#san-pham" onClick={() => setMenuOpen(false)}>Sản phẩm</a>
+              <a href="#lien-he" onClick={() => setMenuOpen(false)}>Liên hệ</a>
+              {/* Quick actions for mobile */}
+              <a href={`tel:${phone.replace(/\s/g,'')}`} className={`px-3 py-2 ${theme.radius} text-center text-white`} style={{background: theme.brand.primary}}>Gọi</a>
+              <a href={`https://zalo.me/${"0976226944"}`} className={`px-3 py-2 ${theme.radius} text-center border`} style={{borderColor: theme.brand.primary, color: theme.brand.primary}}>Zalo</a>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* HERO */}
