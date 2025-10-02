@@ -17,15 +17,13 @@ export default function Layout({ children }) {
             </span>
           </Link>
 
-          <div className="flex-1 min-w-0 x-scroll no-scrollbar max-w-full">
-            <nav className="flex gap-6 text-sm whitespace-nowrap">
-              <Link to="/">Trang chủ</Link>
-              <Link to="/about">Giới thiệu</Link>
-              <Link to="/quy-trinh">Quy trình</Link>
-              <a href="#san-pham">Sản phẩm</a>
-              <a href="#lien-he">Liên hệ</a>
-            </nav>
-          </div>
+          <nav className="flex-1 min-w-0 flex gap-6 text-sm x-scroll whitespace-nowrap max-w-full">
+            <Link to="/">Trang chủ</Link>
+            <Link to="/about">Giới thiệu</Link>
+            <Link to="/quy-trinh">Quy trình</Link>
+            <a href="#san-pham">Sản phẩm</a>
+            <a href="#lien-he">Liên hệ</a>
+          </nav>
         </div>
       </header>   
 

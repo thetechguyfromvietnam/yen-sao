@@ -101,7 +101,7 @@ export default function YenSaoBuiTuyen(){
 
 
   return (
-    <div className={`${theme.brand.bg} text-stone-800 min-h-screen`} style={{overflowX:'hidden'}}> 
+    <div className={`${theme.brand.bg} text-stone-800 min-h-screen`}> 
       {/* NAV */}
       <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/60 border-b border-stone-200">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center gap-3">
@@ -111,24 +111,21 @@ export default function YenSaoBuiTuyen(){
             </span>
             <span className="font-semibold tracking-wide" style={{color: theme.brand.primary}}>Yến Sào Bùi Tuyển</span>
           </a>
-          <div className="flex-1 min-w-0 x-scroll no-scrollbar max-w-full">
-            <div className="flex items-center gap-4 justify-between">
-              <nav className="flex gap-6 text-sm whitespace-nowrap">
-                <Link to="/">Trang chủ</Link>
-                <Link to="/about">Giới thiệu</Link>
-                <Link to="/quy-trinh">Quy trình</Link>
-                <Link to="#san-pham">Sản phẩm</Link>
-                <Link to="#lien-he">Liên hệ</Link>
-              </nav>
-              <div className="flex items-center gap-2 shrink-0">
-                <a href={`tel:${phone.replace(/\s/g,'')}`} className={`px-3 py-2 ${theme.radius}`} style={{background: theme.brand.primary, color: 'white'}}>
-                  <div className="flex items-center gap-2 text-sm"><Phone className="h-4 w-4"/> Gọi</div>
-                </a>
-                <a href={`https://zalo.me/${"0976226944"}`} className={`px-3 py-2 ${theme.radius} border text-sm`} style={{borderColor: theme.brand.primary, color: theme.brand.primary}}>
-                  <div className="flex items-center gap-2"><MessageCircle className="h-4 w-4"/> Zalo</div>
-                </a>
-              </div>
-            </div>
+          <nav className="flex-1 min-w-0 flex gap-6 text-sm x-scroll whitespace-nowrap max-w-full">
+            <Link to="/">Trang chủ</Link>
+            <Link to="/about">Giới thiệu</Link>
+            <Link to="/quy-trinh">Quy trình</Link>
+            <Link to="#san-pham">Sản phẩm</Link>
+            <Link to="#lien-he">Liên hệ</Link>
+          </nav>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <a href={`tel:${phone.replace(/\s/g,'')}`} className={`px-3 py-2 ${theme.radius}`} style={{background: theme.brand.primary, color: 'white'}}>
+              <div className="flex items-center gap-2 text-sm"><Phone className="h-4 w-4"/> Gọi</div>
+            </a>
+            <a href={`https://zalo.me/${"0976226944"}`} className={`px-3 py-2 ${theme.radius} border text-sm`} style={{borderColor: theme.brand.primary, color: theme.brand.primary}}>
+              <div className="flex items-center gap-2"><MessageCircle className="h-4 w-4"/> Zalo</div>
+            </a>
           </div>
         </div>
       </header>

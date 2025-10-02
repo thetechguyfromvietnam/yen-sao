@@ -17,13 +17,6 @@ img, video, canvas, svg {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Hide scrollbars for cleaner mobile nav */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-/* Prevent accidental horizontal scroll globally */
-html, body { overflow-x: hidden; }
-
 /* Reduce default paddings on small screens if any global wrappers rely on them */
 @media (max-width: 640px) {
   .container-padding-sm {
