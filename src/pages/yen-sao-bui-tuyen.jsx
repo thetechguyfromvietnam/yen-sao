@@ -101,17 +101,17 @@ export default function YenSaoBuiTuyen(){
 
 
   return (
-    <div className={`${theme.brand.bg} text-stone-800 min-h-screen`}> 
+    <div className={`${theme.brand.bg} text-stone-800 min-h-screen`} style={{overflowX:'hidden'}}> 
       {/* NAV */}
       <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/60 border-b border-stone-200">
-        <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-3">
+        <div className="mx-auto max-w-7xl px-4 py-3 flex items-center gap-3">
           <a href="#top" className="flex items-center gap-3">
             <span className="h-10 w-10 grid place-items-center rounded-full" style={{background: theme.brand.primary}}>
               <Leaf className="h-5 w-5 text-white" />
             </span>
             <span className="font-semibold tracking-wide" style={{color: theme.brand.primary}}>Yến Sào Bùi Tuyển</span>
           </a>
-            <nav className="flex gap-6 text-sm x-scroll whitespace-nowrap">
+            <nav className="flex-1 min-w-0 flex gap-6 text-sm x-scroll whitespace-nowrap max-w-full">
             <Link to="/">Trang chủ</Link>
             <Link to="/about">Giới thiệu</Link>
             <Link to="/quy-trinh">Quy trình</Link>

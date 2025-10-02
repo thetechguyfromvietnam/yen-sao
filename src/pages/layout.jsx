@@ -5,7 +5,7 @@ export default function Layout({ children }) {
     <div className="bg-stone-50 text-stone-800 min-h-screen flex flex-col">
       {/* NAVBAR */}
       <header className="bg-white shadow-sm sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-3">
           <Link to="/" className="flex items-center gap-3">
             <img
               src="/pictures/logo.png"
@@ -17,7 +17,7 @@ export default function Layout({ children }) {
             </span>
           </Link>
 
-          <nav className="flex gap-6 text-sm x-scroll whitespace-nowrap">
+          <nav className="flex-1 min-w-0 flex gap-6 text-sm x-scroll whitespace-nowrap max-w-full">
             <Link to="/">Trang chủ</Link>
             <Link to="/about">Giới thiệu</Link>
             <Link to="/quy-trinh">Quy trình</Link>
