@@ -160,32 +160,6 @@ export default function DocsPage() {
             </div>
           </div>
         </section>
-
-        {/* CONTACT */}
-        <section id="lien-he" className="mx-auto max-w-7xl px-4 py-12">
-          <h2 className="text-2xl font-semibold mb-4" style={{ color: theme.brand.primary }}>
-            Thông tin liên hệ
-          </h2>
-
-          <div className={`${theme.radius} ${theme.shadow} ${theme.brand.surface} p-6 flex flex-col sm:flex-row gap-6 items-start` }>
-            <div className="flex items-center gap-3">
-              <Phone className="h-5 w-5" />
-              <a href="tel:0976226944" className="font-medium hover:underline">0976 226 944</a>
-            </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="h-5 w-5" />
-              <a
-                href="https://maps.google.com/?q=Số 138, Thôn 11, Xã Long Hà, Tỉnh Đồng Nai"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:underline"
-              >
-                Số 138, Thôn 11, Xã Long Hà, Tỉnh Đồng Nai
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* BACK TO TOP */}
         {showTop && (
           <button

@@ -24,8 +24,8 @@ export default function Layout({ children }) {
             <Link to="/">Trang chủ</Link>
             <Link to="/about">Giới thiệu</Link>
             <Link to="/quy-trinh">Quy trình</Link>
-            <a href="#san-pham">Sản phẩm</a>
-            <a href="#lien-he">Liên hệ</a>
+            <a href="/#san-pham">Sản phẩm</a>
+            <a href="/#lien-he">Liên hệ</a>
           </nav>
 
           {/* Mobile hamburger */}

@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Phone, MessageCircle, ShoppingCart, Calendar, Mail, MapPin, CheckCircle2, ChevronRight, Leaf, ShieldCheck, Clock, Sparkles, Star } from "lucide-react";
 import "../index.css";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
-
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 // ---------- THEME ----------
 const theme = {
   brand: {
@@ -18,7 +18,7 @@ const theme = {
 };
 // ---------- ASSETS PLACEHOLDERS ----------
 const gallery = [
-  { src: "/pictures/yen-tho.png", alt: "Yến Thô" },
+  { src: "/pictures/yen-tho.jpg", alt: "Yến Thô" },
   { src: "/pictures/yen-tho-2.png", alt: "Yến Thô 2" },
   { src: "/pictures/yen-tinh.png", alt: "Yến Tinh" },
   { src: "/pictures/yen-tinh-2.png", alt: "Yến Tinh 2" },
@@ -101,6 +101,22 @@ export default function YenSaoBuiTuyen(){
     return `https://zalo.me/${zaloId}?text=${text}`;
   };
 
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      // Delay slightly to ensure content is rendered before scrolling
+      setTimeout(() => {
+        const section = document.querySelector(hash);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // small delay helps if React needs to render first
+    } else {
+      // Scroll to top if no hash
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [hash]);
 
   return (
     <div className={`${theme.brand.bg} text-stone-800 min-h-screen`}> 
@@ -118,8 +134,8 @@ export default function YenSaoBuiTuyen(){
             <Link to="/">Trang chủ</Link>
             <Link to="/about">Giới thiệu</Link>
             <Link to="/quy-trinh">Quy trình</Link>
-            <Link to="#san-pham">Sản phẩm</Link>
-            <Link to="#lien-he">Liên hệ</Link>
+            <a href="/#san-pham">Sản phẩm</a>
+            <a href="/#lien-he">Liên hệ</a>
           </nav>
 
           {/* Mobile actions + hamburger */}
@@ -131,13 +147,21 @@ export default function YenSaoBuiTuyen(){
               <div className="flex items-center gap-2"><MessageCircle className="h-4 w-4"/> Zalo</div>
             </a>
             <button
-              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border"
+              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl border border-stone-300 bg-white shadow-sm hover:bg-stone-100 active:scale-95 transition-all duration-200"
               aria-label="Mở menu"
               onClick={() => setMenuOpen(v => !v)}
             >
-              <span className="block w-5 h-[2px] bg-stone-700"/>
-              <span className="block w-5 h-[2px] bg-stone-700 mt-1.5"/>
-              <span className="block w-5 h-[2px] bg-stone-700 mt-1.5"/>
+              <div className="relative w-5 h-4">
+                <span
+                  className={`absolute left-0 top-0 block h-[2px] w-full bg-stone-700 rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[6px]' : ''}`}
+                />
+                <span
+                  className={`absolute left-0 top-[6px] block h-[2px] w-full bg-stone-700 rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}
+                />
+                <span
+                  className={`absolute left-0 bottom-0 block h-[2px] w-full bg-stone-700 rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[6px]' : ''}`}
+                />
+              </div>
             </button>
           </div>
         </div>
@@ -147,8 +171,8 @@ export default function YenSaoBuiTuyen(){
               <Link to="/" onClick={() => setMenuOpen(false)}>Trang chủ</Link>
               <Link to="/about" onClick={() => setMenuOpen(false)}>Giới thiệu</Link>
               <Link to="/quy-trinh" onClick={() => setMenuOpen(false)}>Quy trình</Link>
-              <a href="#san-pham" onClick={() => setMenuOpen(false)}>Sản phẩm</a>
-              <a href="#lien-he" onClick={() => setMenuOpen(false)}>Liên hệ</a>
+              <a href="/#san-pham" onClick={() => setMenuOpen(false)}>Sản phẩm</a>
+              <a href="/#lien-he" onClick={() => setMenuOpen(false)}>Liên hệ</a>
               {/* Quick actions for mobile */}
               <a href={`tel:${phone.replace(/\s/g,'')}`} className={`px-3 py-2 ${theme.radius} text-center text-white`} style={{background: theme.brand.primary}}>Gọi</a>
               <a href={`https://zalo.me/${"0976226944"}`} className={`px-3 py-2 ${theme.radius} text-center border`} style={{borderColor: theme.brand.primary, color: theme.brand.primary}}>Zalo</a>
