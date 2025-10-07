@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MessageCircle, ShoppingCart, Calendar, Mail, MapPin, CheckCircle2, ChevronRight, Leaf, ShieldCheck, Clock, Sparkles, Star } from "lucide-react";
 import "../index.css";
 import { Link } from "react-router-dom";
@@ -92,6 +92,13 @@ export default function YenSaoBuiTuyen(){
       : "Giỏ hàng trống.";
 
 
+  const handleScrollToCart = () => {
+    const cartSection = document.getElementById("dat-hang");
+    if (cartSection) {
+      cartSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
 
 
   const makeZaloMessage = () => {
@@ -119,6 +126,7 @@ export default function YenSaoBuiTuyen(){
   }, [hash]);
 
   return (
+    
     <div className={`${theme.brand.bg} text-stone-800 min-h-screen`}> 
       {/* NAV */}
       <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/60 border-b border-stone-200">
@@ -460,6 +468,28 @@ export default function YenSaoBuiTuyen(){
           <p>© {new Date().getFullYear()} Yến Sào Bùi Tuyển. All rights reserved.</p>
         </div>
       </footer>
+      {/* 🛒 Floating "Xem Giỏ Hàng" Button */}
+    <AnimatePresence>
+      {cart.length > 0 && (
+      <motion.button
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.3 }}
+      onClick={() => {
+        const cartSection = document.getElementById("dat-hang");
+        if (cartSection) {
+          cartSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }}
+        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-orange-500 px-3 py-2 text-sm md:px-4 md:py-3 md:text-base text-white shadow-lg hover:bg-orange-600 active:scale-95 transition"
+      >
+      <ShoppingCart className="w-5 h-5" />
+      <span className="font-medium">Xem Giỏ Hàng</span>
+      </motion.button>
+      )}
+    </AnimatePresence>
+
     </div>
   );
 }
