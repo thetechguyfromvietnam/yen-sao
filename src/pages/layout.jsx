@@ -47,8 +47,8 @@ export default function Layout({ children }) {
               <Link to="/" onClick={() => setMenuOpen(false)}>Trang chủ</Link>
               <Link to="/about" onClick={() => setMenuOpen(false)}>Giới thiệu</Link>
               <Link to="/quy-trinh" onClick={() => setMenuOpen(false)}>Quy trình</Link>
-              <a href="#san-pham" onClick={() => setMenuOpen(false)}>Sản phẩm</a>
-              <a href="#lien-he" onClick={() => setMenuOpen(false)}>Liên hệ</a>
+              <a href="/#san-pham" onClick={() => setMenuOpen(false)}>Sản phẩm</a>
+              <a href="/#lien-he" onClick={() => setMenuOpen(false)}>Liên hệ</a>
             </nav>
           </div>
         )}
